@@ -1,0 +1,222 @@
+header {
+  margin-top: 8px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+  width: 100%;
+  height: 400px;
+  box-shadow: inset 0 6em 5em rgb(255, 255, 255), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+header h1 {
+  font-size: 2.5em;
+  font-family: "Itim", cursive;
+  color: #5dd95d;
+  padding: 1em 0;
+}
+header button {
+  display: none;
+}
+.form__control {
+  width: 50%;
+  margin: 0 auto;
+  box-shadow: 0 2em 2em rgba(255, 255, 255, 0.7),
+    0 -2em 2em rgba(255, 255, 255, 0.7);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.search__icon {
+  color: #c2bfbf;
+  padding: 10px;
+  font-size: 1.5em;
+}
+.form__control input {
+  width: 100%;
+  height: 90%;
+  padding: 15px 10px;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  color: #454a4d;
+  font-family: "Itim", cursive;
+  flex: 1;
+}
+.houses {
+  position: relative;
+  width: 100%;
+}
+.card__container {
+  position: absolute;
+  width: 80%;
+  margin: 0 auto;
+  max-height: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  padding: 5px 8px;
+  justify-content: center;
+  align-items: center;
+  left: 10%;
+  top: 300px;
+  /* border-top-right-radius: 50px;
+  border-top-left-radius: 50px; */
+}
+.card {
+  max-width: 47%;
+  padding: 10px;
+  display: flex;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  margin: 5px;
+}
+
+.card__body {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  position: relative;
+}
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  color: #5dd95d;
+}
+.property__createdAt {
+  color: #454a4d;
+  font-family: "Itim", cursive;
+  font-size: 1.2em;
+}
+.card__description {
+  color: #454a4d;
+  font-family: "Kanit", sans-serif;
+}
+.card__media {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+.card__media span {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  color: #5dd95d;
+}
+.card__media img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.card__actions {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #5dd95d;
+  font-family: "Itim", cursive;
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.nav__button {
+  padding: 20px;
+}
+.nav__button > span:not(:nth-last-of-type(2)) {
+  padding: 7px 13px;
+  margin: 5px;
+  background-color: #eeeeee;
+  border-radius: 3px;
+  color: #454a4d;
+  font-family: "Kanit", sans-serif;
+}
+.nav__button > span:not(:nth-last-of-type(2)):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.3s ease-in;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  transition: transform 0.3s ease-out;
+  position: relative;
+}
+.card:hover:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(93, 217, 93, 0.3);
+  border-radius: 5px;
+  animation: draw 2s ease-out 0.3s 1 normal forwards;
+}
+
+.location {
+  animation: bounce 2s ease-out 0.3s 4 normal none;
+}
+
+@-moz-keyframes bounce {
+  from {
+    transform: translateY(-30%) scaleY(1.2);
+  }
+  to {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(-30%) scaleY(1.2);
+  }
+  to {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(-30%) scaleY(1.2);
+  }
+  to {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@-moz-keyframes draw {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes draw {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes draw {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
