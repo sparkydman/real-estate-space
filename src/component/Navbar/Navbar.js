@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -18,22 +18,38 @@ const Navbar = () => {
             <p>+2348122572924 :Contact</p>
             <ul className="social__media">
               <li>
-                <a href="https://facebook.com/calist23" target="_blank">
+                <a
+                  href="https://facebook.com/calist23"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="fab fa-facebook"></i>
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/barcafan_067" target="_blank">
+                <a
+                  href="https://twitter.com/barcafan_067"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="fab fa-twitter"></i>
                 </a>
               </li>
               <li>
-                <a href="https://instagram/gozie_rep" target="_blank">
+                <a
+                  href="https://instagram/gozie_rep"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="fab fa-instagram-square"></i>
                 </a>
               </li>
               <li>
-                <a href="mailto:gozieugwuede@gmail.com" target="_blank">
+                <a
+                  href="mailto:gozieugwuede@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <i className="fab fa-google-plus"></i>
                 </a>
               </li>
