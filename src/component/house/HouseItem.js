@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-const HouseItem = (props) => {
+const HouseItem = () => {
   return (
     <div className="card">
       <div className="card__media">
