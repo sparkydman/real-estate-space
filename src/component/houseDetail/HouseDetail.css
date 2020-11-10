@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.main__container {
+  width: 80%;
+  margin: 20px auto;
+  font-family: "Kanit", sans-serif;
+  color: #454a4d;
+  font: 18px;
+  display: flex;
+  flex-direction: column;
+}
+.property__top {
+  flex: 1;
+  display: flex;
+}
+.img__div {
+  flex: 1;
+}
+.info__container {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.property_map {
+  width: 100%;
+}

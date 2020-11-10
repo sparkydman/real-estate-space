@@ -1,9 +1,44 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
 import HouseItem from "./HouseItem";
 import "./Houses.css";
+import HouseContext from "../../context/houses/houseContext";
 
 const Houses = () => {
-  const houseImage = "http://localhost:3000/house.jpg";
+  const [offset, setOffset] = useState(0);
+  const [data, setData] = useState([]);
+  const [perPage] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
+  const houseContext = React.useContext(HouseContext);
+
+  // eslint-disable-next-line no-unused-vars
+  const { getForSale, forSale, isLoading } = houseContext;
+
+  React.useEffect(() => {
+    getForSale();
+  }, []);
+  // console.log(forSale);
+  const houseImage =
+    "http://localhost:3000/house.jpg" ||
+    "https://real-estate-space.herokuapp.com/house.jpg";
+
+  const getHouses = () => {
+    const postData = forSale
+      .slice(offset, offset + perPage)
+      .map((property, i) => <HouseItem key={i} property={property} />);
+    setData(postData);
+    setPageCount(Math.ceil(forSale.length / perPage));
+  };
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    setOffset(selectedPage + 1);
+  };
+
+  React.useEffect(() => {
+    getHouses();
+  }, [offset]);
+
   return (
     <div className="houses">
       <header style={{ backgroundImage: `url(${houseImage})` }}>
@@ -19,26 +54,20 @@ const Houses = () => {
         </form>
       </header>
       <div className="card__container">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-          <HouseItem key={item} />
-        ))}
-        <div className="nav__button">
-          <span>
-            <i className="fas fa-angle-left"></i>
-          </span>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>
-            <i className="fas fa-ellipsis-h"></i>
-          </span>
-          <span>
-            <i className="fas fa-angle-right"></i>
-          </span>
-        </div>
+        {data}
+        <ReactPaginate
+          previousLabel={"prev"}
+          nextLabel={"next"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          subContainerClassName={"pages pagination"}
+          activeClassName={"active"}
+        />
       </div>
     </div>
   );
