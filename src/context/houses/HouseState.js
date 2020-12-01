@@ -29,25 +29,29 @@ const HouseState = ({ children }) => {
   const [state, dispatch] = useReducer(HouseReducer, initialState);
 
   const getForSale = async () => {
-    const options = {
-      method: "GET",
-      url: "https://realtor.p.rapidapi.com/properties/v2/list-for-sale",
-      params: {
-        city: "New York City",
-        limit: 200,
-        offset: 0,
-        state_code: "NY",
-        sort: "relevance",
-      },
-      headers,
-    };
+    try {
+      const options = {
+        method: "GET",
+        url: "https://realtor.p.rapidapi.com/properties/v2/list-for-sale",
+        params: {
+          city: "New York City",
+          limit: 200,
+          offset: 0,
+          state_code: "NY",
+          sort: "relevance",
+        },
+        headers,
+      };
 
-    const { data } = await axios.request(options);
-    // console.log(data.properties);
-    dispatch({
-      type: GET_FOR_SALE_PROPERTIES,
-      payload: data.properties,
-    });
+      const { data } = await axios.request(options);
+      // console.log(data.properties);
+      dispatch({
+        type: GET_FOR_SALE_PROPERTIES,
+        payload: data.properties,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const getCurrentProperty = async (id) => {
@@ -64,6 +68,7 @@ const HouseState = ({ children }) => {
         payload: data.properties[0],
       });
     } catch (err) {
+      console.log(err);
       dispatch({
         type: ERROR,
       });

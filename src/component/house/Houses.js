@@ -34,10 +34,10 @@ const Houses = () => {
     getForSale();
   }, []);
 
-  const houseImage =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000/house.jpg"
-      : "https://real-estate-space.herokuapp.com/house.jpg";
+  // const houseImage =
+  //   process.env.NODE_ENV === "development"
+  //     ? "http://localhost:3000/house.jpg"
+  //     : "https://real-estate-space.herokuapp.com/house.jpg";
 
   React.useEffect(() => {
     getHouses();
@@ -73,7 +73,7 @@ const Houses = () => {
       style={{ marginBottom: isLoading ? "30px" : "1150px" }}
       id="houses"
     >
-      <header style={{ backgroundImage: `url(${houseImage})` }}>
+      <header>
         <h1>Search for a home</h1>
         <Downshift
           onChange={(selection) => handInputChange(selection.city)}
