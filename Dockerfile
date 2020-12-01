@@ -11,4 +11,4 @@ COPY . .
 
 RUN npm build
 
-CMD [ "node","start" ]
+CMD [ "npm","start" ]
