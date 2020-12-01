@@ -8,6 +8,8 @@ import {
   GET_FOR_SALE_PROPERTIES,
   GET_FOR_SOLD_PROPERTIES,
   GET_PROPERTY,
+  ERROR,
+  GET_USA_STATES,
 } from "./type";
 import axios from "axios";
 
@@ -19,7 +21,9 @@ const HouseState = ({ children }) => {
   const initialState = {
     forSale: [],
     isLoading: true,
-    currentProperty: {},
+    currentProperty: null,
+    usa_states: [],
+    error: false,
   };
 
   const [state, dispatch] = useReducer(HouseReducer, initialState);
@@ -53,10 +57,24 @@ const HouseState = ({ children }) => {
       params: { property_id: id },
       headers,
     };
-    const { data } = await axios.request(options);
+    try {
+      const { data } = await axios.request(options);
+      dispatch({
+        type: GET_PROPERTY,
+        payload: data.properties[0],
+      });
+    } catch (err) {
+      dispatch({
+        type: ERROR,
+      });
+    }
+  };
+
+  const getStates = async () => {
+    const { data } = await axios.get("usa_cities.json");
     dispatch({
-      type: GET_PROPERTY,
-      payload: data.properties[0],
+      type: GET_USA_STATES,
+      payload: data,
     });
   };
 
@@ -66,8 +84,11 @@ const HouseState = ({ children }) => {
         forSale: state.forSale,
         isLoading: state.isLoading,
         currentProperty: state.currentProperty,
+        error: state.error,
+        usa_states: state.usa_states,
         getForSale,
         getCurrentProperty,
+        getStates,
       }}
     >
       {children}

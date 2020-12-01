@@ -3,6 +3,8 @@ import React from "react";
 import "./Navbar.css";
 
 const Navbar = () => {
+  // const flipWord = (word) => word.split("").reverse().reverse().join("");
+
   return (
     <div className="header">
       <div className="container">
@@ -64,9 +66,6 @@ const Navbar = () => {
             </li>
             <li>
               <a href="/#about-us">About us</a>
-            </li>
-            <li>
-              <a href="/#contact-us">Contact us</a>
             </li>
           </ul>
         </div>

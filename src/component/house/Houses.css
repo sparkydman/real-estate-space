@@ -18,9 +18,14 @@ header h1 {
 header button {
   display: none;
 }
-.form__control {
+.search__container {
   width: 50%;
   margin: 0 auto;
+  position: relative;
+}
+.form__control {
+  width: 100%;
+  height: 100%;
   box-shadow: 0 2em 2em rgba(255, 255, 255, 0.7),
     0 -2em 2em rgba(255, 255, 255, 0.7);
   background-color: #ffffff;
@@ -42,6 +47,34 @@ header button {
   color: #454a4d;
   font-family: "Itim", cursive;
   flex: 1;
+}
+.search__container > ul {
+  list-style: none;
+  margin-top: 3px;
+  background-color: #fff;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  max-height: 500px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-track-color: transparent;
+  scrollbar-width: 0px;
+  scrollbar-color: #454545;
+}
+.search__container > ul > li {
+  text-align: left;
+  font-size: 1.2em;
+  padding: 5px;
+  font-size: 18px;
+  color: #454a4d;
+  font-family: "Itim", cursive;
+}
+.search__container > ul > li:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
 }
 .houses {
   position: relative;
@@ -153,6 +186,13 @@ header button {
   cursor: pointer;
   transform: scale(1.2);
   transition: all 0.3s ease-in;
+}
+.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* .nav__button {
