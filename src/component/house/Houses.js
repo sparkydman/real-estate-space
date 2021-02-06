@@ -1,11 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import { css } from '@emotion/core';
 import ClipLoader from 'react-spinners/ClipLoader';
 import HouseItem from './HouseItem';
 import './Houses.css';
-import HouseContext from '../../context/houses/houseContext';
-import Downshift from 'downshift';
+
+import { useSelector } from 'react-redux';
 
 const overide = css`
   display: block;
@@ -18,38 +19,19 @@ const Houses = () => {
   const [data, setData] = useState([]);
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const houseContext = React.useContext(HouseContext);
   const [searchInput, setSearchInput] = React.useState('');
 
-  const {
-    getForSale,
-    forSale,
-    isLoading,
-    getStates,
-    usa_states,
-  } = houseContext;
+  const propertyList = useSelector((state) => state.propertyList);
 
-  React.useEffect(() => {
-    getStates();
-    getForSale();
-  }, []);
+  const { loading, properties, error } = propertyList;
 
-  // const houseImage =
-  //   process.env.NODE_ENV === "development"
-  //     ? "http://localhost:3000/house.jpg"
-  //     : "https://real-estate-space.herokuapp.com/house.jpg";
-
-  React.useEffect(() => {
-    getHouses();
-  }, [offset, forSale]);
-
-  const getHouses = () => {
-    const postData = forSale
-      .slice(offset, offset + perPage)
-      .map((property, i) => <HouseItem key={i} property={property} />);
-    setData(postData);
-    setPageCount(Math.ceil(forSale.length / perPage));
-  };
+  // const getHouses = () => {
+  //   const postData = properties.data && properties
+  //     .slice(offset, offset + perPage)
+  //     .map((property, i) => <HouseItem key={i} property={property} />);
+  //   setData(postData);
+  //   setPageCount(Math.ceil(forSale.length / perPage));
+  // };
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
     setOffset(selectedPage + 1);
@@ -71,57 +53,19 @@ const Houses = () => {
     <div className='houses' id='houses'>
       <header>
         <h1>Search for a home</h1>
-        <Downshift
-          onChange={(selection) => handInputChange(selection.city)}
-          itemToString={(item) => (item ? item.city : '')}
-          onInputValueChange={(value) => handInputChange(value)}
-        >
-          {({
-            getInputProps,
-            getItemProps,
-            getMenuProps,
-            isOpen,
-            inputValue,
-            getRootProps,
-          }) => (
-            <div className='search__container'>
-              <form onSubmit={handleFormsubmit}>
-                <div
-                  className='form__control'
-                  {...getRootProps({}, { suppressRefError: true })}
-                >
-                  <input
-                    {...getInputProps()}
-                    placeholder='Search for properties'
-                  />
-                  <span className='search__icon'>
-                    <i className='fas fa-search'></i>
-                  </span>
-                </div>
-                <button type='submit'>search</button>
-              </form>
-              <ul {...getMenuProps()}>
-                {isOpen
-                  ? usa_states
-                      .filter(
-                        (item) => inputValue && item.city.includes(inputValue)
-                      )
-                      .map((item, index) => (
-                        <li
-                          key={`${item.city}-${index}`}
-                          {...getItemProps({
-                            index,
-                            item,
-                          })}
-                        >
-                          {item.city}
-                        </li>
-                      ))
-                  : null}
-              </ul>
+
+        <div className='search__container'>
+          <form>
+            <div className='form__control'>
+              <input placeholder='Search for properties' />
+              <span className='search__icon'>
+                <i className='fas fa-search'></i>
+              </span>
             </div>
-          )}
-        </Downshift>
+            <button type='submit'>search</button>
+          </form>
+          <ul></ul>
+        </div>
 
         {/* <form>
           <div className="form__control">
@@ -134,19 +78,25 @@ const Houses = () => {
         </form> */}
       </header>
       <div className='card__container'>
-        {isLoading ? (
+        {loading ? (
           <div className='loader'>
             <ClipLoader
               css={overide}
               size={100}
               color={'#5dd95d'}
-              loading={isLoading}
+              loading={loading}
             />
           </div>
+        ) : error ? (
+          <p>{error}</p>
         ) : (
           <>
-            {data}
-            <ReactPaginate
+            {properties &&
+              properties.success &&
+              properties.data.map((property) => (
+                <HouseItem key={properties.id} property={property} />
+              ))}
+            {/* <ReactPaginate
               previousLabel={'prev'}
               nextLabel={'next'}
               breakLabel={'...'}
@@ -158,7 +108,7 @@ const Houses = () => {
               containerClassName={'pagination'}
               subContainerClassName={'pages pagination'}
               activeClassName={'active'}
-            />
+            /> */}
           </>
         )}
       </div>

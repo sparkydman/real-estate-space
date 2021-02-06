@@ -5,7 +5,7 @@ import {
   GET_ALL_PROPERTIES_FAIL,
 } from '../constants/properties';
 
-export const propertyList = (state = { properties: [] }, action) => {
+export const propertyList = (state = { properties: {} }, action) => {
   const { type, payload } = action;
   switch (type) {
     case GET_ALL_PROPERTIES_REQUEST:

@@ -15,10 +15,12 @@ export const getAllProperties = () => async (dispatch) => {
       payload: data,
     });
   } catch (err) {
-    console.log(err.response);
     dispatch({
       type: GET_ALL_PROPERTIES_FAIL,
-      payload: err.message,
+      payload:
+        err.response && err.response.data.error
+          ? err.response.data.error.message
+          : err.message,
     });
   }
 };

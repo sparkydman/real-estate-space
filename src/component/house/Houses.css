@@ -92,9 +92,9 @@ header button {
   width: 80%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 50%);
   background-color: #ffffff;
-  padding: 5px 8px;
+  padding: 0 8px;
   justify-content: center;
   align-items: center;
   top: 300px;
@@ -116,6 +116,8 @@ header button {
   flex-direction: column;
   height: 200px;
   position: relative;
+  flex: 1;
+  flex-shrink: 0;
 }
 .card__header {
   display: flex;
@@ -137,6 +139,8 @@ header button {
   width: 292px;
   height: 200px;
   position: relative;
+  flex: 1;
+  flex-shrink: 0;
 }
 .card__media span {
   position: absolute;
@@ -343,6 +347,11 @@ header button {
   }
   .card__media {
     width: 100%;
+    flex: unset;
+  }
+  .card__body {
+    flex: unset;
+    height: 150px;
   }
 }
 @media (max-width: 700px) {
