@@ -1,8 +1,8 @@
 .main .container {
-  display: block;
+  display: none;
 }
 .title {
-  font-family: "Itim", cursive;
+  font-family: 'Itim', cursive;
   color: #454a4d;
   position: relative;
   display: block;
@@ -10,7 +10,7 @@
   padding-bottom: 0.5em;
 }
 .title:after {
-  content: "";
+  content: '';
   width: 40px;
   height: 7px;
   border-top-left-radius: 3px;
@@ -70,7 +70,7 @@
 .exc__body h2 {
   font-size: 1em;
   text-align: center;
-  font-family: "Itim", cursive;
+  font-family: 'Itim', cursive;
   color: #454a4d;
 }
 .exc__body h3 {
@@ -78,7 +78,7 @@
 }
 .exc__body h3,
 .exc__body p {
-  font-family: "Kanit", sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: 0.8em;
   color: #454a4d;
   text-align: center;
@@ -91,6 +91,11 @@
   color: #454a4d;
 }
 .about__container h2 {
-  font-family: "Itim", cursive;
+  font-family: 'Itim', cursive;
   padding: 10px 0;
+}
+@media (max-width: 1028px) {
+  .main {
+    display: none;
+  }
 }

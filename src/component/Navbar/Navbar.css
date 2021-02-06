@@ -1,13 +1,13 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+:root {
+  --primary: #5dd95d;
+  --zIndex: 1000;
 }
 .header {
-  font-family: "Kanit", sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: 18px;
   color: #454a4d;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: var(--zIndex);
 }
 .container {
   width: 80%;
@@ -37,7 +37,7 @@
   left: 10%;
 }
 .img__container:after {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -62,8 +62,8 @@
   flex-direction: column;
 }
 .top__menu p {
-  color: #5dd95d;
-  font-family: "Roboto", sans-serif;
+  color: var(--primary);
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-size: 0.8em;
   text-align: right;
@@ -76,7 +76,7 @@
 }
 .social__media li a {
   padding: 10px;
-  color: #5dd95d;
+  color: var(--primary);
   font-size: 1.2em;
 }
 .social__media li:last-child a {
@@ -105,16 +105,16 @@
   transition: all 0.3s ease-in;
 }
 .bottom__menu li a:hover {
-  color: #5dd95d;
+  color: var(--primary);
   transition: all 0.3s ease-in;
   position: relative;
 }
 .bottom__menu li a:hover:after {
-  content: "";
+  content: '';
   width: 50%;
   height: 3px;
   border-radius: 3px;
-  background-color: #5dd95d;
+  background-color: var(--primary);
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -123,16 +123,41 @@
 }
 
 .bottom__menu li .active__link {
-  color: #5dd95d !important;
+  color: var(--primary) !important;
 }
 .bottom__menu li .active__link:after {
-  content: "" !important;
+  content: '' !important;
   width: 50% !important;
   height: 3px !important;
   border-radius: 3px !important;
-  background-color: #5dd95d !important;
+  background-color: var(--primary) !important;
   position: absolute !important;
   bottom: 0 !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
+}
+@media (max-width: 1028px) {
+  .header {
+    position: sticky;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+  }
+  .container {
+    width: 90%;
+  }
+  .logo__container {
+    height: 80px;
+  }
+  .top__menu p {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .logo__container {
+    height: 50px;
+  }
+  .main__menu {
+    display: none;
+  }
 }

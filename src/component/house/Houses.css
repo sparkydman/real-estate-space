@@ -1,6 +1,12 @@
+:root {
+  --primary: #5dd95d;
+}
 header {
+  position: absolute;
+  top: 0;
+  left: 0;
   margin-top: 8px;
-  background-image: url("https://real-estate-space.herokuapp.com/house.jpg");
+  background-image: url('https://real-estate-space.herokuapp.com/house.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -12,8 +18,8 @@ header {
 }
 header h1 {
   font-size: 2.5em;
-  font-family: "Itim", cursive;
-  color: #5dd95d;
+  font-family: 'Itim', cursive;
+  color: var(--primary);
   padding: 1em 0;
 }
 header button {
@@ -46,7 +52,7 @@ header button {
   outline: 0;
   font-size: 18px;
   color: #454a4d;
-  font-family: "Itim", cursive;
+  font-family: 'Itim', cursive;
   flex: 1;
 }
 .search__container > ul {
@@ -71,7 +77,7 @@ header button {
   padding: 5px;
   font-size: 18px;
   color: #454a4d;
-  font-family: "Itim", cursive;
+  font-family: 'Itim', cursive;
 }
 .search__container > ul > li:hover {
   background-color: #eeeeee;
@@ -82,23 +88,21 @@ header button {
   width: 100%;
 }
 .card__container {
-  position: absolute;
+  position: relative;
   width: 80%;
   margin: 0 auto;
-  max-height: 700px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #ffffff;
   padding: 5px 8px;
   justify-content: center;
   align-items: center;
-  left: 10%;
   top: 300px;
+  z-index: 100;
   /* border-top-right-radius: 50px;
   border-top-left-radius: 50px; */
 }
 .card {
-  max-width: 47%;
   padding: 10px;
   display: flex;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
@@ -118,16 +122,16 @@ header button {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 15px;
-  color: #5dd95d;
+  color: var(--primary);
 }
 .property__createdAt {
   color: #454a4d;
-  font-family: "Itim", cursive;
+  font-family: 'Itim', cursive;
   font-size: 0.8em;
 }
 .card__description {
   color: #454a4d;
-  font-family: "Kanit", sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 .card__media {
   width: 292px;
@@ -138,8 +142,8 @@ header button {
   position: absolute;
   top: 5px;
   right: 10px;
-  color: #5dd95d;
-  display: "flex";
+  color: var(--primary);
+  display: 'flex';
 }
 .card__media img {
   height: 100%;
@@ -151,8 +155,8 @@ header button {
   position: absolute;
   width: 100%;
   bottom: 0;
-  color: #5dd95d;
-  font-family: "Itim", cursive;
+  color: var(--primary);
+  font-family: 'Itim', cursive;
   display: flex;
   flex-direction: column;
   padding-right: 10px;
@@ -181,7 +185,7 @@ header button {
   background-color: #eeeeee;
   border-radius: 3px;
   color: #454a4d;
-  font-family: "Kanit", sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 .nav__button > ul > li:not(:nth-last-of-type(2)) > span:hover {
   cursor: pointer;
@@ -196,30 +200,8 @@ header button {
   justify-content: center;
 }
 
-/* .nav__button {
-  padding: 20px;
-}
-.nav__button > span {
-  padding: 7px 13px;
-  background-color: #eeeeee;
-  border-radius: 3px;
-  color: #454a4d;
-  font-family: "Kanit", sans-serif;
-}
-.nav__button > span:first-child {
-  margin-right: 50px;
-}
-.nav__button > span:last-child {
-  margin-left: 50px;
-}
-.nav__button > span:hover {
-  cursor: pointer;
-  transform: scale(1.2);
-  transition: all 0.3s ease-in;
-} */
-
 .active__navBtn {
-  color: #5dd95d !important;
+  color: var(--primary) !important;
 }
 
 .card:hover {
@@ -229,7 +211,7 @@ header button {
   position: relative;
 }
 .card:hover:after {
-  content: "";
+  content: '';
   position: absolute;
   height: 5px;
   bottom: 0;
@@ -250,12 +232,12 @@ header button {
   outline: none;
 }
 .pagination > .active > a {
-  background-color: #5dd95d;
-  border-color: #5dd95d;
+  background-color: var(--primary);
+  border-color: var(--primary);
   color: #fff;
 }
 .pagination > li > a {
-  border: 1px solid #5dd95d;
+  border: 1px solid var(--primary);
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
@@ -266,13 +248,13 @@ header button {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #5dd95d;
-  border-color: #5dd95d;
+  background-color: var(--primary);
+  border-color: var(--primary);
   outline: none;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: #5dd95d;
+  color: var(--primary);
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span,
@@ -332,5 +314,79 @@ header button {
   }
   to {
     width: 100%;
+  }
+}
+@media (max-width: 1028px) {
+  header > h1 {
+    padding-bottom: 0;
+  }
+  .search__container {
+    width: 70%;
+  }
+  .form__control {
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .search__icon {
+    color: var(--primary);
+  }
+  .card__container {
+    grid-template-columns: repeat(2, 50%);
+    width: 90%;
+    top: 200px;
+  }
+  .card {
+    background-color: #fff;
+    flex-direction: column;
+  }
+  .card__media {
+    width: 100%;
+  }
+}
+@media (max-width: 700px) {
+  header {
+    position: static;
+    background-image: unset;
+    height: auto;
+    box-shadow: inset 0 6em 5em rgb(255, 255, 255);
+  }
+  .houses {
+    max-height: 100vh;
+    overflow-y: scroll;
+    margin-bottom: 50px;
+  }
+  header > h1 {
+    display: none;
+  }
+  .search__container {
+    width: 80%;
+  }
+  .form__control {
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    margin: 1.2rem 0;
+    overflow: hidden;
+  }
+  .search__icon {
+    color: var(--primary);
+  }
+  .card__container {
+    grid-template-columns: repeat(1, 100%);
+    width: 100%;
+    left: unset;
+    top: unset;
+    position: static;
+  }
+  .card {
+    background-color: #fff;
+    flex-direction: column;
+  }
+  .card__media {
+    width: 100%;
+  }
+  .pagination {
+    display: none;
   }
 }

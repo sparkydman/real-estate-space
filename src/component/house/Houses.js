@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
-import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
-import HouseItem from "./HouseItem";
-import "./Houses.css";
-import HouseContext from "../../context/houses/houseContext";
-import Downshift from "downshift";
+import React, { useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import { css } from '@emotion/core';
+import ClipLoader from 'react-spinners/ClipLoader';
+import HouseItem from './HouseItem';
+import './Houses.css';
+import HouseContext from '../../context/houses/houseContext';
+import Downshift from 'downshift';
 
 const overide = css`
   display: block;
@@ -19,7 +19,7 @@ const Houses = () => {
   const [perPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
   const houseContext = React.useContext(HouseContext);
-  const [searchInput, setSearchInput] = React.useState("");
+  const [searchInput, setSearchInput] = React.useState('');
 
   const {
     getForSale,
@@ -68,16 +68,12 @@ const Houses = () => {
   };
 
   return (
-    <div
-      className="houses"
-      style={{ marginBottom: isLoading ? "30px" : "1150px" }}
-      id="houses"
-    >
+    <div className='houses' id='houses'>
       <header>
         <h1>Search for a home</h1>
         <Downshift
           onChange={(selection) => handInputChange(selection.city)}
-          itemToString={(item) => (item ? item.city : "")}
+          itemToString={(item) => (item ? item.city : '')}
           onInputValueChange={(value) => handInputChange(value)}
         >
           {({
@@ -88,21 +84,21 @@ const Houses = () => {
             inputValue,
             getRootProps,
           }) => (
-            <div className="search__container">
+            <div className='search__container'>
               <form onSubmit={handleFormsubmit}>
                 <div
-                  className="form__control"
+                  className='form__control'
                   {...getRootProps({}, { suppressRefError: true })}
                 >
                   <input
                     {...getInputProps()}
-                    placeholder="Search for a home in any USA cities"
+                    placeholder='Search for properties'
                   />
-                  <span className="search__icon">
-                    <i className="fas fa-search"></i>
+                  <span className='search__icon'>
+                    <i className='fas fa-search'></i>
                   </span>
                 </div>
-                <button type="submit">search</button>
+                <button type='submit'>search</button>
               </form>
               <ul {...getMenuProps()}>
                 {isOpen
@@ -137,13 +133,13 @@ const Houses = () => {
           <button type="submit">search</button>
         </form> */}
       </header>
-      <div className="card__container">
+      <div className='card__container'>
         {isLoading ? (
-          <div className="loader">
+          <div className='loader'>
             <ClipLoader
               css={overide}
               size={100}
-              color={"#5dd95d"}
+              color={'#5dd95d'}
               loading={isLoading}
             />
           </div>
@@ -151,17 +147,17 @@ const Houses = () => {
           <>
             {data}
             <ReactPaginate
-              previousLabel={"prev"}
-              nextLabel={"next"}
-              breakLabel={"..."}
-              breakClassName={"break-me"}
+              previousLabel={'prev'}
+              nextLabel={'next'}
+              breakLabel={'...'}
+              breakClassName={'break-me'}
               pageCount={pageCount}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              subContainerClassName={"pages pagination"}
-              activeClassName={"active"}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'}
             />
           </>
         )}
