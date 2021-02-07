@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { propertyList } from './properties';
-// console.log(propertyList());
+import propertyDetail from './getPropertyDetail';
 
 export default combineReducers({
   propertyList,
+  propertyDetail,
 });

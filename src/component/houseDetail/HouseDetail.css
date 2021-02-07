@@ -6,7 +6,7 @@
 .main__container {
   width: 80%;
   margin: 20px auto;
-  font-family: "Kanit", sans-serif;
+  font-family: 'Kanit', sans-serif;
   color: #454a4d;
   font: 18px;
   display: flex;
@@ -64,4 +64,19 @@
 }
 .property_map {
   width: 100%;
+}
+
+@media (max-width: 1028px) {
+  .main__container {
+    width: 100%;
+  }
+  .property__top {
+    flex-direction: column;
+  }
+  .img__div {
+    width: 100%;
+  }
+  .img__div img {
+    width: 100%;
+  }
 }

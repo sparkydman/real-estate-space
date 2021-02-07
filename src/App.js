@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import Home from './component/Home';
+import Home from './screen/Home';
 import Navbar from './component/Navbar/Navbar';
 import HouseState from './context/houses/HouseState';
-import HouseDetail from './component/houseDetail/HouseDetail';
+import HouseDetail from './screen/HouseDetail';
 
 const App = () => {
   return (
